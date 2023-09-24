@@ -5,8 +5,8 @@
 
 struct Node {
   int data;
-  class Node* left;
-  class Node* right;
+  struct Node* left;
+  struct Node* right;
 };
 
 Node* createNode(int data){
