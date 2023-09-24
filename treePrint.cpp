@@ -37,12 +37,23 @@ void printNodes(Node* node){
     printNodes(node->right);
   }
 }
+
+void clearNodes(Node* node){
+  if (node == NULL){
+    return;
+  }
+  clearNodes(node->left);
+  clearNodes(node->right);
+  delete node;
+}
+
 int getData(Node* node){
   if(node != NULL){
     return node->data;
   }
   return -1;
 }
+
 void printInBetween(Node* node, int k1, int k2){
   if (node != NULL){
     if (k1 < node->data){
@@ -56,6 +67,7 @@ void printInBetween(Node* node, int k1, int k2){
     }
   }
 }
+
 void printInBetweenAndLimits(Node* node, int k1, int k2){
   if (node != NULL){
     if (k1 <= node->data){
@@ -69,6 +81,7 @@ void printInBetweenAndLimits(Node* node, int k1, int k2){
     }
   }
 }
+
 int getNumber(std::string str){
   std::string number = "";
   char ch;
@@ -98,6 +111,7 @@ void numberFunction(Node* node, std::string string){
     addNode(node, inputNum);
   }
 }
+
 Node* startFile(void){
   std::ifstream inFile;
   std::string input;
@@ -121,6 +135,7 @@ Node* startFile(void){
     return temp;
   }
 }
+
 void menu(Node* node){
   std::cout << "Give the first number(k1), second number(k2) " << std::endl;
   std::cout << "ex) 4, 130 -> 4 is the LOWER limit and 130 is the UPPER limit " << std::endl;
@@ -163,6 +178,7 @@ int main(){
 
   //printNodes(root);
   menu(root);
+  clearNodes(root);
   
   return 0;
 }
