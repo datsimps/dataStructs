@@ -44,6 +44,7 @@ void clearNodes(Node* node){
   }
   clearNodes(node->left);
   clearNodes(node->right);
+  node = NULL;
   delete node;
 }
 
